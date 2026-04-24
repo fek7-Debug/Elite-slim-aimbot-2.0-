@@ -6,183 +6,241 @@
     <title>Elite Slim Hub | Universal</title>
     <style>
         :root {
-            --primary: #00ff7b;
-            --bg: #0a0a0a;
-            --card: #151515;
-            --text: #ffffff;
+            /* Nuevo Tema Azul */
+            --primary: #0088ff;
+            --bg: #03080e;
+            --card: #08121d;
+            --text: #e0f0ff;
         }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+            line-height: 1.6;
         }
 
+        .main-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Language Switcher */
         .lang-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
             gap: 10px;
         }
 
         .lang-btn {
             background: rgba(255,255,255,0.05);
-            border: 1px solid #333;
-            color: #888;
-            padding: 6px 12px;
+            border: 1px solid #2a415a;
+            color: #8da9c7;
+            padding: 8px 16px;
             cursor: pointer;
-            border-radius: 6px;
-            font-size: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
         .lang-btn.active {
             border-color: var(--primary);
             color: var(--primary);
-            background: rgba(0, 255, 123, 0.1);
+            background: rgba(0, 136, 255, 0.1);
         }
 
+        /* Container & Sections */
         .container {
             background: var(--card);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            text-align: center;
-            border: 1px solid #222;
-            max-width: 480px;
-            width: 90%;
-            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            border: 1px solid #1a2a3a;
         }
 
-        h1 {
+        .title {
+            text-align: center;
             color: var(--primary);
             margin-bottom: 0.5rem;
-            font-size: 2.2rem;
+            margin-top: 0;
+            font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(0, 255, 123, 0.3);
+            text-shadow: 0 0 20px rgba(0, 136, 255, 0.4);
         }
 
         .desc {
-            color: #aaa;
+            text-align: center;
+            color: #8da9c7;
             margin-bottom: 2rem;
-            font-size: 1rem;
-            line-height: 1.4;
+            font-size: 1.1rem;
         }
 
+        /* Loadstring Box */
         .loadstring-box {
-            background: #000;
-            padding: 1.2rem;
-            border-radius: 10px;
-            border: 1px solid #333;
+            background: #000408;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #1a2a3a;
             font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             word-break: break-all;
-            margin-bottom: 1.5rem;
             cursor: pointer;
             transition: 0.3s;
-            color: #00ff7b;
-            position: relative;
+            color: #79caff;
         }
 
         .loadstring-box:hover {
             border-color: var(--primary);
-            background: #050505;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: #000;
-            border: none;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-            width: 100%;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(0, 255, 123, 0.2);
-        }
-
-        .btn:hover {
-            background: #00e66e;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 255, 123, 0.4);
+            background: #00060c;
         }
 
         #copy-status {
-            height: 20px;
+            text-align: center;
+            height: 25px;
             margin-top: 10px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: var(--primary);
             visibility: hidden;
         }
 
-        .footer {
+        /* Explanatory Sections */
+        .section-title {
+            color: var(--primary);
             margin-top: 2rem;
-            font-size: 0.75rem;
-            color: #444;
+            font-size: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            border-bottom: 1px solid #1a2a3a;
+            padding-bottom: 10px;
+        }
+
+        .option-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option-item {
+            margin-bottom: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #1a2a3a;
+        }
+
+        .option-name {
+            font-weight: bold;
+            color: #79caff;
+            font-size: 1.1rem;
+        }
+
+        .option-desc {
+            color: #8da9c7;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4c627a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .container { padding: 1.5rem; }
+            .title { font-size: 2rem; }
+            .section-title { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="lang-switch">
-        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENGLISH</button>
-        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ESPAÑOL</button>
-    </div>
-
-    <div class="container">
-        <h1>Elite Slim Hub</h1>
-        <p id="desc" class="desc">The most powerful universal script for Mobile & PC gamers.</p>
-        
-        <div class="loadstring-box" id="script-box" onclick="copyScript()">
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/fek7-Debug/Elite-slim-aimbot-2.0-/refs/heads/main/main.lua"))()
+    <div class="main-wrapper">
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+            <button class="lang-btn" id="btn-es" onclick="setLang('es')">Español</button>
         </div>
 
-        <button id="btn-text" class="btn" onclick="copyScript()">Copy Loadstring</button>
-        <div id="copy-status">✓ Copied to clipboard!</div>
+        <div class="container">
+            <h1 class="title">Elite Slim Hub</h1>
+            <p id="desc" class="desc">The ultimate universal script for Mobile & PC gaming.</p>
+            
+            <div class="loadstring-box" id="script-box" onclick="copyScript()">
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/fek7-Debug/Elite-slim-aimbot-2.0-/refs/heads/main/main.lua"))()
+            </div>
+            <div id="copy-status">✓ Copied to clipboard!</div>
 
-        <div class="footer" id="footer">
-            V23 GLOBAL EDITION | ELITE SLIM TEAM
+            <h2 class="section-title" id="features-title">Hub Features Explained</h2>
+            <ul class="option-list" id="option-list">
+                </ul>
+
+            <div class="footer" id="footer">
+                V23 GLOBAL | ELITE SLIM TEAM
+            </div>
         </div>
     </div>
 
     <script>
         const translations = {
             en: {
-                desc: "The most powerful universal script for Mobile & PC gamers.",
-                btn: "Copy Loadstring",
+                desc: "The ultimate universal script for Mobile & PC gaming.",
                 copied: "✓ Copied to clipboard!",
-                footer: "V23 GLOBAL EDITION | ELITE SLIM TEAM"
+                features: "Hub Features Explained",
+                footer: "V23 GLOBAL | ELITE SLIM TEAM",
+                options: [
+                    { name: "Aimbot [🔫]", desc: "Automatically targets enemies. Includes prediction and smoothing." },
+                    { name: "Aim Configs [⚙️]", desc: "Customize smoothness, prediction, FOV size, and filters like Wall Check." },
+                    { name: "Slim Visuals [👁️]", desc: "ESP for Boxes, Health, Names, and Skeletons through walls." },
+                    { name: "Performance [⚡]", desc: "In-game FPS & Ping monitors, and optimization tools." },
+                    { name: "World [🌐]", desc: "Game modifications like Spin Bot and Infinite Jump." }
+                ]
             },
             es: {
-                desc: "El script universal más potente para jugadores de Móvil y PC.",
-                btn: "Copiar Loadstring",
+                desc: "El script universal definitivo para jugar en Móvil y PC.",
                 copied: "✓ ¡Copiado al portapapeles!",
-                footer: "V23 EDICIÓN GLOBAL | ELITE SLIM TEAM"
+                features: "Explicación de las Opciones",
+                footer: "V23 GLOBAL | ELITE SLIM TEAM",
+                options: [
+                    { name: "Aimbot [🔫]", desc: "Apunta automáticamente a los enemigos. Incluye predicción y suavizado." },
+                    { name: "Aim Configs [⚙️]", desc: "Personaliza el suavizado, predicción, tamaño del FOV y filtros como Wall Check." },
+                    { name: "Slim Visuals [👁️]", desc: "ESP para Cajas, Salud, Nombres y Esqueletos a través de paredes." },
+                    { name: "Performance [⚡]", desc: "Monitores de FPS y Ping en tiempo real, y herramientas de optimización." },
+                    { name: "World [🌐]", desc: "Modificaciones del mundo como Spin Bot y Salto Infinito." }
+                ]
             }
         };
 
         let currentLang = 'en';
 
+        function populateOptions(lang) {
+            const list = document.getElementById('option-list');
+            list.innerHTML = ''; // Clear current
+            translations[lang].options.forEach(opt => {
+                const li = document.createElement('li');
+                li.className = 'option-item';
+                li.innerHTML = `<div class="option-name">${opt.name}</div><div class="option-desc">${opt.desc}</div>`;
+                list.appendChild(li);
+            });
+        }
+
         function setLang(lang) {
             currentLang = lang;
             document.getElementById('desc').innerText = translations[lang].desc;
-            document.getElementById('btn-text').innerText = translations[lang].btn;
+            document.getElementById('features-title').innerText = translations[lang].features;
             document.getElementById('footer').innerText = translations[lang].footer;
             document.getElementById('copy-status').style.visibility = 'hidden';
+            
+            populateOptions(lang);
             
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-es').classList.toggle('active', lang === 'es');
@@ -199,6 +257,9 @@
                 }, 2500);
             });
         }
+
+        // Initial setup
+        setLang('en');
     </script>
 </body>
 </html>
