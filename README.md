@@ -57,3 +57,12 @@ Better versión of elite aimbot
 * **AI Support:** Gemini AI
 
 > **Disclaimer:** This script is for educational purposes only. Use it at your own risk.
+
+--
+
+## ⚡ Quick Execution (Loadstring)
+
+Copy and paste this code into your executor to run the script directly from the official repository:
+
+```lua
+loadstring(game:HttpGet("[https://raw.githubusercontent.com/fek7-Debug/Elite-slim-aimbot-2.0-/refs/heads/main/main.lua](https://raw.githubusercontent.com/fek7-Debug/Elite-slim-aimbot-2.0-/refs/heads/main/main.lua)"))()
