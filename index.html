@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Slim Hub | Universal</title>
+    <style>
+        :root {
+            --primary: #00ff7b;
+            --bg: #0a0a0a;
+            --card: #151515;
+            --text: #ffffff;
+        }
 
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            color: #888;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(0, 255, 123, 0.1);
+        }
+
+        .container {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            text-align: center;
+            border: 1px solid #222;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 255, 123, 0.3);
+        }
+
+        .desc {
+            color: #aaa;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .loadstring-box {
+            background: #000;
+            padding: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid #333;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+            word-break: break-all;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #00ff7b;
+            position: relative;
+        }
+
+        .loadstring-box:hover {
+            border-color: var(--primary);
+            background: #050505;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 123, 0.2);
+        }
+
+        .btn:hover {
+            background: #00e66e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 123, 0.4);
+        }
+
+        #copy-status {
+            height: 20px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--primary);
+            visibility: hidden;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lang-switch">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENGLISH</button>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ESPAÑOL</button>
+    </div>
+
+    <div class="container">
+        <h1>Elite Slim Hub</h1>
+        <p id="desc" class="desc">The most powerful universal script for Mobile & PC gamers.</p>
+        
+        <div class="loadstring-box" id="script-box" onclick="copyScript()">
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/fek7-Debug/Elite-slim-aimbot-2.0-/refs/heads/main/main.lua"))()
+        </div>
+
+        <button id="btn-text" class="btn" onclick="copyScript()">Copy Loadstring</button>
+        <div id="copy-status">✓ Copied to clipboard!</div>
+
+        <div class="footer" id="footer">
+            V23 GLOBAL EDITION | ELITE SLIM TEAM
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                desc: "The most powerful universal script for Mobile & PC gamers.",
+                btn: "Copy Loadstring",
+                copied: "✓ Copied to clipboard!",
+                footer: "V23 GLOBAL EDITION | ELITE SLIM TEAM"
+            },
+            es: {
+                desc: "El script universal más potente para jugadores de Móvil y PC.",
+                btn: "Copiar Loadstring",
+                copied: "✓ ¡Copiado al portapapeles!",
+                footer: "V23 EDICIÓN GLOBAL | ELITE SLIM TEAM"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.getElementById('desc').innerText = translations[lang].desc;
+            document.getElementById('btn-text').innerText = translations[lang].btn;
+            document.getElementById('footer').innerText = translations[lang].footer;
+            document.getElementById('copy-status').style.visibility = 'hidden';
+            
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        }
+
+        function copyScript() {
+            const scriptText = document.getElementById('script-box').innerText;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                const status = document.getElementById('copy-status');
+                status.innerText = translations[currentLang].copied;
+                status.style.visibility = 'visible';
+                setTimeout(() => {
+                    status.style.visibility = 'hidden';
+                }, 2500);
+            });
+        }
+    </script>
+</body>
+</html>
